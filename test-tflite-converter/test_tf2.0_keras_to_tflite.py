@@ -96,8 +96,8 @@ keras.models.save_model(model, keras_model_file)
 """### Convert Keras model to TensorFlow Lite model"""
 # Note: conversion to tflite works in tf 1.11.0 and 1.12.0, but not 2.0 preview
 # converter=tf.contrib.lite.TocoConverter.from_keras_model_file(keras_model_file)   # TF 1.11.0
-converter=tf.contrib.lite.TFLiteConverter.from_keras_model_file(keras_model_file)   # TF 1.12.0
-# converter = tf.lite.TFLiteConverter.from_keras_model_file(keras_model_file)       # TF 2.0
+# converter=tf.contrib.lite.TFLiteConverter.from_keras_model_file(keras_model_file)   # TF 1.12.0
+converter = tf.lite.TFLiteConverter.from_keras_model_file(keras_model_file)       # TF 2.0
 tflite_model = converter.convert()
 tflite_model_file_name = "mnist_" + version + "_" + str(date.today()) + ".tflite"
 open(tflite_model_file_name, "wb").write(tflite_model)
